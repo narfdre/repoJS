@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<title>jsonp test</title>
+		<script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
+		<script type="text/javascript">
+            $(function(){
+                $('#jsonp').click(function(e){
+                    e.preventDefault();
+                    console.log('jsonp clicked');					
+
+                     $.ajax({
+                        dataType: 'jsonp',
+                        data: "lib=jquery",
+                        jsonp: 'callback',
+                        url: 'http://localhost:3000/getLib?callback=?',
+                        success: function(data) {
+                            console.log('success');
+                            console.log(data);
+                        }
+                    });
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div id="jsonThing"><a href="#" id="jsonp">test jsonp</a></div>
+    </body>
+</html>
